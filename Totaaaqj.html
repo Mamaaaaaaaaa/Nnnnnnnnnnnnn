@@ -1,0 +1,31 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><script>// script.js
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("beautyForm");
+    const message = document.getElementById("message");
+    const replyButton = document.getElementById("replyButton");
+    const replyForm = document.getElementById("replyForm");
+    const sendMessageButton = document.getElementById("sendMessage");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        form.style.display = "none";
+        message.classList.remove("hidden");
+    });
+
+    replyButton.addEventListener("click", function() {
+        message.classList.add("hidden");
+        replyForm.classList.remove("hidden");
+    });
+
+    sendMessageButton.addEventListener("click", function() {
+        const userMessage = document.getElementById("userMessage").value;
+        if (userMessage.trim() === "") {
+            alert("يرجى كتابة رسالة.");
+            return;
+        }
+        
+        // إرسال الرسالة عبر البريد الإلكتروني
+        const mailtoLink = `mailto:hamzamagdy1977@gmail.com?subject=رسالة%20جمال%20توتا&body=${encodeURIComponent(userMessage)}`;
+        window.location.href = mailtoLink;
+    });
+});</script>
